@@ -88,6 +88,7 @@ plugins=(
 )
 
 source $ZSH
+source ~/.zsh_profile
 
 # User configuration
 

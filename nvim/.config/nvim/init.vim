@@ -470,8 +470,8 @@ nnoremap <Leader>0 <C-w>=<CR>
 nnoremap <Leader>a :Ex<CR>
 nnoremap <Leader>- :suspend<CR>
 nnoremap <Leader>s :w<CR>
-nnoremap <Leader>x :wq<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>qq :q!<CR>
 nnoremap <Leader>r :source ~/.config/nvim/init.vim<CR>
+nnoremap <Leader>x :!chmod +x %<CR>
 

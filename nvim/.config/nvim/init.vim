@@ -474,5 +474,5 @@ nnoremap <Leader>q :q<CR>
 nnoremap <Leader>qq :q!<CR>
 nnoremap <Leader>r :source ~/.config/nvim/init.vim<CR>
 nnoremap <Leader>x :!chmod +x %<CR>
-nnoremap <silent> <C-f> :silent !tmux new-window t tmux-sessionize <CR>
+nnoremap <silent> <C-f> :silent !tmux neww tmux-sessionize<CR>
 

@@ -28,6 +28,7 @@ autocmd FileType markdown setlocal wrap
 autocmd FileType markdown setlocal textwidth=60
 set nowrap
 
+let g:luajit_host_prog = '/usr/bin/luajit'
 let &t_SI = "\<esc>[5 q"  " blinking I-beam in insert mode
 let &t_SR = "\<esG>[3 q"  " blinking underline in replace mode
 let &t_EI = "\<esc>[ q"  " default cursor (usually blinking block) otherwise
@@ -41,7 +42,8 @@ endif
 
 call plug#begin()
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sainnhe/gruvbox-material'
@@ -57,24 +59,8 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'itchyny/lightline.vim'
-Plug 'KabbAmine/yowish.vim'
 Plug 'habamax/vim-gruvbit'
 call plug#end()
- 
-
-let g:yowish_colors = {
-      \ "bg":      ["#282c34", "233"],
-      \ "fg":      ["#abb2bf", "146"],
-      \ "black":   ["#2c323d", "235"],
-      \ "red":     ["#996c75", "167"],
-      \ "green":   ["#98c379", "114"],
-      \ "yellow":  ["#e5c07b", "180"],
-      \ "blue":    ["#61afef", "110"],
-      \ "magenta": ["#c678dd", "175"],
-      \ "cyan":    ["#56b6c2", "108"],
-      \ "white":   ["#dcdfe4", "252"],
-      \ "orange":  ["#d19a66", "173"],
-      \ }
 
 " Important!!
 if has('termguicolors')
@@ -194,10 +180,10 @@ let mapleader = " "
 
 " ----------------------------------------------
 " Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+"nnoremap <leader>ff <cmd>Telescope find_files<cr>
+"nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+"nnoremap <leader>fb <cmd>Telescope buffers<cr>
+"nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " ------------------------------------------------------------------------------
 "  COC 
@@ -310,6 +296,16 @@ xmap ic <Plug>(coc-classobj-i)
 omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
+
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
 
 " Use CTRL-S for selections ranges.
 " Requires 'textDocument/selectionRange' support of language server.
@@ -460,9 +456,11 @@ nnoremap <Leader>0 <C-w>=<CR>
 nnoremap <Leader>a :Ex<CR>
 nnoremap <Leader>- :suspend<CR>
 nnoremap <Leader>s :w<CR>
+nnoremap <Leader>x :wq<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>qq :q!<CR>
 nnoremap <Leader>r :source ~/.config/nvim/init.vim<CR>
-nnoremap <Leader>x :!chmod +x %<CR>
-nnoremap <silent> <C-f> :silent !tmux neww tmux-sessionizer<CR>
 
+nnoremap <leader>gg :Files<CR>
+nnoremap <leader>ff :GFiles<CR>
+nnoremap <silent> <C-f> :silent !tmux neww tmux-sessionizer<CR>

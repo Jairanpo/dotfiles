@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/ ~/work ~/personal ~/ws ~/ws/projects ~/ws/projects/data-pipeline/app/features ~/work/tamashii/projects -mindepth 1 -maxdepth 1 -type d 2> /dev/null | fzf)
+    selected=$(find ~/ ~/work ~/personal ~/work/tamashii/projects ~/work/plink/projects ~/work/plink/projects/data-pipeline/app/features -mindepth 1 -maxdepth 1 -type d 2> /dev/null | fzf)
 fi
 
 if [[ -z $selected ]]; then

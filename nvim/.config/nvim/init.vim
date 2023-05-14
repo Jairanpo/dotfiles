@@ -464,3 +464,11 @@ nnoremap <Leader>r :source ~/.config/nvim/init.vim<CR>
 nnoremap <leader>gg :Files<CR>
 nnoremap <leader>ff :GFiles<CR>
 nnoremap <silent> <C-f> :silent !tmux neww tmux-sessionizer<CR>
+
+" Increase foldcolumn value
+nnoremap <Leader>+ :let &foldcolumn = &foldcolumn + 8<CR>
+
+" Decrease foldcolumn value
+nnoremap <Leader>- :let &foldcolumn = &foldcolumn - 8<CR>
+
+ 

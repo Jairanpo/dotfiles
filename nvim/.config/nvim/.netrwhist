@@ -1,8 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =6
+let g:netrw_dirhistcnt =1
+let g:netrw_dirhist_1='/home/vagrant/.dotfiles'
+let g:netrw_dirhist_0='/home/vagrant/.dotfiles/nvim/.config/nvim'
+let g:netrw_dirhist_9='/home/vagrant/.dotfiles/nvim/.config'
+let g:netrw_dirhist_8='/home/vagrant/.dotfiles/nvim'
+let g:netrw_dirhist_7='/home/vagrant/.dotfiles'
 let g:netrw_dirhist_6='/home/vagrant/work/main/projects/client'
 let g:netrw_dirhist_5='/home/vagrant/.dotfiles/nvim/.config/nvim'
 let g:netrw_dirhist_4='/home/vagrant/.dotfiles/nvim/.config'
 let g:netrw_dirhist_3='/home/vagrant/.dotfiles/nvim'
 let g:netrw_dirhist_2='/home/vagrant/.dotfiles'
-let g:netrw_dirhist_1='/home/vagrant/work/main/projects/client'

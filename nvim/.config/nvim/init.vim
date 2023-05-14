@@ -1,5 +1,5 @@
 syntax on
-"set number relativenumber
+set number relativenumber
 set termguicolors
 filetype plugin indent on
 set tabstop=2 shiftwidth=2 softtabstop=4

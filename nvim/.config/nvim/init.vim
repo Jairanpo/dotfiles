@@ -21,8 +21,8 @@ set laststatus=2
 set statusline=%f
 set cmdheight=1
 set tabline=0
-set timeoutlen=500
-set ttimeoutlen=500
+set timeoutlen=400
+set ttimeoutlen=200
 
 autocmd FileType markdown setlocal wrap
 autocmd FileType markdown setlocal textwidth=60

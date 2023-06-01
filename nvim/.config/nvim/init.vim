@@ -21,8 +21,6 @@ set laststatus=2
 set statusline=%f
 set cmdheight=1
 set tabline=0
-set timeoutlen=400
-set ttimeoutlen=200
 
 autocmd FileType markdown setlocal wrap
 autocmd FileType markdown setlocal textwidth=60
@@ -455,10 +453,6 @@ nnoremap <Leader>c <C-w>c<CR>
 nnoremap <Leader>0 <C-w>=<CR>
 nnoremap <Leader>a :Ex<CR>
 nnoremap <Leader>- :suspend<CR>
-nnoremap <Leader>s :w<CR>
-nnoremap <Leader>x :wq<CR>
-nnoremap <Leader>q :q<CR>
-nnoremap <Leader>qq :q!<CR>
 nnoremap <Leader>r :source ~/.config/nvim/init.vim<CR>
 
 nnoremap <leader>gg :Files<CR>

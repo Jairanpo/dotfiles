@@ -121,3 +121,9 @@ source ~/.zsh_profile
 source ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
 export PATH="$HOME/.local/bin:$PATH"
 
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+  xmodmap -e "pointer = 3 2 1 "
+fi
+
+
+

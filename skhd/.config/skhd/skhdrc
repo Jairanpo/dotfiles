@@ -66,7 +66,7 @@ alt - c : yabai -m window --toggle float;\
 alt - space : yabai -m window --toggle float
 
 # Create space
-alt + shift - + : yabai -m space --create 1
+alt - = : yabai -m space --create
 
 ctrl + alt - 1 : yabai -m space --destroy 1
 ctrl + alt - 2 : yabai -m space --destroy 2

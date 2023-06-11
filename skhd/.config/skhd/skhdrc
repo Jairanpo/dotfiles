@@ -63,7 +63,7 @@ alt - c : yabai -m window --toggle float;\
                 yabai -m window --grid 4:4:1:1:2:2
 
 # Float / Unfloat window
-alt - f : yabai -m window --toggle float
+ctrl + alt - f : yabai -m window --toggle float
 
 # Create space
 alt - space : yabai -m space --create

@@ -125,5 +125,4 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
   xmodmap -e "pointer = 3 2 1 "
 fi
 
-
-
+eval "$(direnv hook zsh)"

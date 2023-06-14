@@ -3,6 +3,11 @@
 # confirmations, etc.) must go above this block; everything else may go below.
 
 alias tmux="TERM=screen-256color-bce tmux"
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+  xmodmap -e "pointer = 3 2 1 " || echo "unable to change mouse config with xmodmap"
+fi
+
+eval "$(direnv hook zsh)" || echo "unable to hook direnv zsh"
 
 alias python=python3
 
@@ -120,9 +125,3 @@ source ~/.zsh_profile
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 source ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
 export PATH="$HOME/.local/bin:$PATH"
-
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
-  xmodmap -e "pointer = 3 2 1 " || echo "unable to change mouse config with xmodmap"
-fi
-
-eval "$(direnv hook zsh)" || echo "unable to hook direnv zsh"

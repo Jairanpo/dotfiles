@@ -64,5 +64,6 @@ yabai -m rule --add app="^Music$" manage=off
 yabai -m rule --add app="^Toggl Track$" manage=off
 yabai -m rule --add app="^NordVPN$" manage=off
 yabai -m rule --add app="^QuickTime Player$" manage=off
+yabai -m rule --add app="^Microsoft Teams$" manage=off
 
 echo "yabai configuration loaded.."

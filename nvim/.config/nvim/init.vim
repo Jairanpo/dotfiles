@@ -57,17 +57,15 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'itchyny/lightline.vim'
-Plug 'habamax/vim-gruvbit'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 call plug#end()
 
 " Important!!
 if has('termguicolors')
   set termguicolors
 endif
-let g:lightline = {
-      \ 'colorschemk': 'gruvbit',
-      \ }
-colorscheme gruvbit
+let g:lightline = {'colorscheme': 'catppuccin'}
+colorscheme catppuccin
 let g:mkdp_auto_start = 1
 
 " Required for operations modifying multiple buffers like rename.

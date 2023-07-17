@@ -58,6 +58,7 @@ Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'itchyny/lightline.vim'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 " Important!!

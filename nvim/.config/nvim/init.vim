@@ -65,8 +65,8 @@ call plug#end()
 if has('termguicolors')
   set termguicolors
 endif
-let g:lightline = {'colorscheme': 'catppuccin'}
 colorscheme catppuccin
+"let g:lightline = {'colorscheme': 'catppuccin'}
 let g:mkdp_auto_start = 1
 
 " Required for operations modifying multiple buffers like rename.

@@ -454,8 +454,8 @@ nnoremap <Leader>a :Ex<CR>
 nnoremap <Leader>- :suspend<CR>
 nnoremap <Leader>r :source ~/.config/nvim/init.vim<CR>
 
-nnoremap <leader>gg :Files<CR>
-nnoremap <leader>ff :GFiles<CR>
+nnoremap <leader>ff :Files<CR>
+nnoremap <leader>gg :GFiles<CR>
 nnoremap <silent> <C-f> :silent !tmux neww tmux-sessionizer<CR>
 
 " Increase foldcolumn value

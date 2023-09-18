@@ -455,7 +455,7 @@ nnoremap <Leader>a :Ex<CR>
 nnoremap <Leader>- :suspend<CR>
 nnoremap <Leader>r :source ~/.config/nvim/init.vim<CR>
 
-let $FZF_DEFAULT_COMMAND='find . \( -name node_modules -o -name .git \) -prune -o -print'
+let $FZF_DEFAULT_COMMAND='find . \( -name dist -o -name node_modules -o -name .git \) -prune -o -print'
 nnoremap <leader>ff :Files<CR>
 nnoremap <leader>gg :GFiles<CR>
 nnoremap <silent> <C-f> :silent !tmux neww tmux-sessionizer<CR>

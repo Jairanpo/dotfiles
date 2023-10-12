@@ -99,6 +99,15 @@ let g:coc_global_extensions = [
       \ 'coc-sql',
       \ 'coc-prettier',
       \ 'coc-explorer',
+      \ 'coc-eslint',
+      \ 'coc-json',
+      \ 'coc-css',
+      \ 'coc-yaml',
+      \ 'coc-sh',
+      \ 'coc-tslint',
+      \ 'coc-tslint-plugin',
+      \ 'coc-yank',
+      \ 'coc-jest',
       \ ]
 
 let g:LanguageClient_typescript_config = './tsconfig.json'

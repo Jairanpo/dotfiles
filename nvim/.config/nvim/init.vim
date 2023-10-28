@@ -1,4 +1,5 @@
 syntax on
+set encoding=utf-8
 set number relativenumber
 set termguicolors
 filetype plugin indent on
@@ -25,6 +26,12 @@ set tabline=0
 autocmd FileType markdown setlocal wrap
 autocmd FileType markdown setlocal textwidth=60
 set nowrap
+
+inoremap <M-a> á
+inoremap <M-e> é
+inoremap <M-i> í
+inoremap <M-o> ó
+inoremap <M-u> ú
 
 let g:luajit_host_prog = '/usr/bin/luajit'
 let &t_SI = "\<esc>[5 q"  " blinking I-beam in insert mode

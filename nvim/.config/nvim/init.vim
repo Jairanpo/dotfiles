@@ -66,14 +66,16 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'itchyny/lightline.vim'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'KabbAmine/yowish.vim'
 call plug#end()
 
 " Important!!
 if has('termguicolors')
   set termguicolors
 endif
-colorscheme catppuccin
-let g:lightline = {'colorscheme': 'catppuccin'}
+colorscheme yowish
+let g:lightline = {'colorscheme': 'yowish'}
+
 let g:mkdp_auto_start = 1
 
 " Required for operations modifying multiple buffers like rename.
@@ -432,8 +434,6 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" Switch windows position:
-nnoremap <C-s> <C-w><C-r>
 
 " toggle line numbers
 function! ToggleLineNumbers(val)

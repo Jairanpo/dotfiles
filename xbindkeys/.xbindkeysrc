@@ -1,5 +1,6 @@
 "pamixer --unmute --decrease 5"
 b:2
+
 "pamixer --unmute --increase 5"
 b:8
 

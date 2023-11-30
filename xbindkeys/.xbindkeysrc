@@ -1,6 +1,6 @@
-"pamixer --unmute --decrease 3"
+"pamixer --unmute --decrease 5"
 b:2
-"pamixer --unmute --increase 3"
+"pamixer --unmute --increase 5"
 b:8
 
 "~/.hotkeys/switch_keyboard_variant.sh"

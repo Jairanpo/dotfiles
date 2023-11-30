@@ -433,7 +433,7 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " Switch windows position:
-nnoremap <Leader>r <C-w><C-r>
+nnoremap <Leader>s <C-w><C-r>
 
 " toggle line numbers
 function! ToggleLineNumbers(val)

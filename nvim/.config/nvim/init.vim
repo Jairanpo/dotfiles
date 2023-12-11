@@ -455,6 +455,8 @@ nnoremap <silent> <A-l> :vertical resize +9<CR>
 nnoremap <silent> <A-k> :resize +3<CR>
 nnoremap <silent> <A-j> :resize -3<CR>
 
+nnoremap <C-s> <C-w><C-r>
+
 map <Leader>th <C-w>t<C-w>H
 map <Leader>tk <C-w>t<C-w>K
 

@@ -73,8 +73,11 @@ call plug#end()
 if has('termguicolors')
   set termguicolors
 endif
-colorscheme yowish
-let g:lightline = {'colorscheme': 'yowish'}
+" colorscheme yowish
+" let g:lightline = {'colorscheme': 'yowish'}
+
+let g:lighline = {'colorscheme': 'catppuccin'}
+colorscheme catppuccin "catppuccin-mocka"
 
 let g:mkdp_auto_start = 1
 

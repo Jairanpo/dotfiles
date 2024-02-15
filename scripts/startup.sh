@@ -10,3 +10,4 @@ sudo virsh pool-create-as --name default --type dir --target ~/virtual_images
 
 rescuetime &
 blueman-manager &
+redshift -l "21.12908:-101.67374"

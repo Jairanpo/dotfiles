@@ -1,6 +1,5 @@
 syntax on
 set encoding=utf-8
-set number relativenumber
 set termguicolors
 filetype plugin indent on
 set tabstop=2 shiftwidth=2 softtabstop=4
@@ -67,6 +66,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'KabbAmine/yowish.vim'
+Plug 'dhruvasagar/vim-zoom'
 call plug#end()
 
 " Important!!
@@ -489,4 +489,6 @@ nnoremap <Leader>+ :let &foldcolumn = &foldcolumn + 8<CR>
 " Decrease foldcolumn value
 nnoremap <Leader>- :let &foldcolumn = &foldcolumn - 8<CR>
 
+" VIM ZOOM
+map <Leader>m <C-m>m<CR>
  

@@ -438,20 +438,21 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 
-" toggle line numbers
-function! ToggleLineNumbers(val)
-  if a:val == "on"
-    set number
-    set relativenumber
-  endif
-  if a:val == "off"
-    set number!
-    set relativenumber!
-  endif
-endfunction
+" toggle line numbers                                                                                   
+function! ToggleLineNumbers()                                                                           
+  if &number                                                                                            
+    echo "Numbers turned on"                                                                            
+    set number!                                                                                         
+    set relativenumber!                                                                                 
+  else                                                                                                  
+    echo "Numbers turned off"                                                                           
+    set number                                                                                          
+    set relativenumber                                                                                  
+  endif                                                                                                 
+endfunction                                                                                             
+                                                                                                        
+nnoremap <leader>nu :call ToggleLineNumbers()<CR>
 
-nnoremap <leader>n :call ToggleLineNumbers("on")<CR>
-nnoremap <leader>nn :call ToggleLineNumbers("off")<CR>
 
 nnoremap <silent> <A-h> :vertical resize -9<CR>
 nnoremap <silent> <A-l> :vertical resize +9<CR>
@@ -489,6 +490,7 @@ nnoremap <Leader>+ :let &foldcolumn = &foldcolumn + 8<CR>
 " Decrease foldcolumn value
 nnoremap <Leader>- :let &foldcolumn = &foldcolumn - 8<CR>
 
-" VIM ZOOM
-map <Leader>m <C-m>m<C-w>w<C-m>m<CR>
- 
+" Toggle Zoom                                                                                           
+map <Leader>m <C-w>m<CR>                                                                                
+map <Leader>n <C-w>m<C-w>w<C-w>m<CR>                                                                    
+set statusline+=%{zoom#statusline()}   

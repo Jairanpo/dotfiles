@@ -480,8 +480,8 @@ nnoremap <Leader>- :suspend<CR>
 nnoremap <Leader>r :source ~/.config/nvim/init.vim<CR>
 
 let $FZF_DEFAULT_COMMAND='find . \( -name dist -o -name node_modules -o -name .git \) -prune -o -print'
-nnoremap <leader>ff :Files<CR>
-nnoremap <leader>gg :GFiles<CR>
+nnoremap <leader>gg :Files<CR>
+"nnoremap <leader>gg :GFiles<CR>
 nnoremap <silent> <C-f> :silent !tmux neww tmux-sessionizer<CR>
 
 " Increase foldcolumn value
@@ -492,6 +492,6 @@ nnoremap <Leader>- :let &foldcolumn = &foldcolumn - 8<CR>
 
 " Toggle Zoom                                                                                           
 map <Leader>m <C-w>m<CR>                                                                                
-map <Leader>n <C-w>m<C-w>w<C-w>m<CR>                                                                    
-map <Leader>p <C-w>m<C-w>p<C-w>m<CR>                                                                    
+map <Leader>f <C-w>m<C-w>w<C-w>m<CR>                                                                    
+map <Leader>p <C-w>m<C-w>W<C-w>m<CR>                                                                    
 set statusline+=%{zoom#statusline()}   

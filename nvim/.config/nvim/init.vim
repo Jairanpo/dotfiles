@@ -493,4 +493,5 @@ nnoremap <Leader>- :let &foldcolumn = &foldcolumn - 8<CR>
 " Toggle Zoom                                                                                           
 map <Leader>m <C-w>m<CR>                                                                                
 map <Leader>n <C-w>m<C-w>w<C-w>m<CR>                                                                    
+map <Leader>p <C-w>m<C-w>p<C-w>m<CR>                                                                    
 set statusline+=%{zoom#statusline()}   

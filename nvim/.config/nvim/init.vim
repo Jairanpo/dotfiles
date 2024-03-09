@@ -490,5 +490,5 @@ nnoremap <Leader>+ :let &foldcolumn = &foldcolumn + 8<CR>
 nnoremap <Leader>- :let &foldcolumn = &foldcolumn - 8<CR>
 
 " VIM ZOOM
-map <Leader>m <C-m>m<CR>
+map <Leader>m <C-m>m<C-w>w<C-m>m<CR>
  

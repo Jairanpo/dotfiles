@@ -1,43 +1,17 @@
 #!/usr/bin/env bash
 
-echo 'write your pattern'
+echo 'Write your pattern:'
 read pattern
-echo "This is you pattern: $pattern"
+echo "This is your pattern: $pattern"
 
-mapfile -t selected < <(grep -rli --exclude-dir=node_modules --exclude-dir=venv "${pattern}" .)
+# Run grep and pipe the result into fzf for user selection
+selected_file=$(grep -rli --exclude-dir=node_modules --exclude-dir=venv "${pattern}" . | fzf)
 
-echo "Files found:"
+# Check if a file was selected (fzf will return an empty string if the user exits without selecting)
+if [ -z "$selected_file" ]; then
+    echo "No file selected."
+    exit 0
+else
+    nvim "${selected_file}"
+fi
 
-case ${#selected[@]} in
-    0)
-        echo "No files found matching pattern."
-        ;;
-    1)
-        # If exactly one file is found, automatically use it.
-        nvim ${selected[0]} 
-        exit 0
-        ;;
-    *)
-        # If more than one file is found, let the user choose.
-        echo "Files found:"
-        for i in "${!selected[@]}"; do
-          echo "$((i+1))) ${selected[$i]}"
-        done
-
-        echo "Please choose a file by entering its number:"
-        read choice
-
-        # Adjust the choice to array index
-        index=$((choice-1))
-
-        # Validate the choice and act accordingly
-        if [[ index -ge 0 && index -lt ${#selected[@]} ]]; then
-            nvim "${selected[$index]}"
-            exit 0
-            echo "You selected: ${selected[$index]}"
-        else
-            echo "Invalid selection. Please run the script again and select a valid number."
-            exit 1
-        fi
-        ;;
-esac

@@ -5,7 +5,7 @@ read pattern
 echo "This is your pattern: $pattern"
 
 # Run grep and pipe the result into fzf for user selection
-selected_file=$(grep -rli --exclude-dir=node_modules --exclude-dir=venv "${pattern}" . | fzf)
+selected_file=$(grep -rli --exclude-dir=node_modules --exclude-dir=dist --exclude-dir=venv "${pattern}" . | fzf)
 
 # Check if a file was selected (fzf will return an empty string if the user exits without selecting)
 if [ -z "$selected_file" ]; then

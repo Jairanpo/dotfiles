@@ -1,0 +1,6 @@
+require('core.plugin_config.poimandres')
+require('core.plugin_config.lualine')
+require('core.plugin_config.treesitter')
+require('core.plugin_config.telescope')
+require('core.plugin_config.mason')
+require('core.plugin_config.lsp_config')

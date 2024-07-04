@@ -1,4 +1,10 @@
-require('telescope').setup({ file_ignore_patterns = { "node%_modules/.*", "dist/.*", ".git/.*" } })
+require('telescope').setup{ 
+  defaults = {
+    file_ignore_patterns = {
+      "node%_modules/.*", "dist/.*", ".git/.*" 
+    } 
+  }
+}
 local builtin = require('telescope.builtin')
 
 vim.keymap.set('n', '<leader>gg', builtin.find_files, {})

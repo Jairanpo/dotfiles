@@ -20,7 +20,6 @@ vim.keymap.set('n', '<leader>r', function() SourceInitLua() end, {noremap = true
 
 vim.api.nvim_set_keymap('n', '<leader><leader><leader>l', '<Plug>NetrwRefresh', {noremap = true, silent = true})
 
-vim.keymap.set('n', '<leader>a', ':Ex<CR>')
 vim.keymap.set('n', '<leader>0', '<C-w>0')
 vim.keymap.set('n', '<C-h>', '<C-w>h', {noremap=true})
 vim.keymap.set('n', '<C-j>', '<C-w>j', {noremap=true})

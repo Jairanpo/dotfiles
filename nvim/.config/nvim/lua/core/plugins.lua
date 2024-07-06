@@ -37,10 +37,10 @@ local plugins = {
   "saadparwaiz1/cmp_luasnip",
   "rafamadriz/friendly-snippets",
   {
-  'stevearc/oil.nvim',
-  opts = {},
-  dependencies = { "nvim-tree/nvim-web-devicons" }
-}
+    'stevearc/oil.nvim',
+    opts = {},
+    dependencies = { "nvim-tree/nvim-web-devicons" }
+  }
 }
 
 local opts = {}

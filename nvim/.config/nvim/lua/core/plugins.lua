@@ -28,7 +28,13 @@ local plugins = {
   {'nvim-telescope/telescope.nvim', tag = '0.1.8', dependencies = { 'nvim-lua/plenary.nvim' }},
   "github/copilot.vim",
   "williamboman/mason.nvim",
-  "williamboman/mason-lspconfig.nvim",
+  {
+    "williamboman/mason-lspconfig.nvim",
+    lazy = false,
+    opts = {
+      auto_install = true
+    }
+  },
   "neovim/nvim-lspconfig",
   "christoomey/vim-tmux-navigator",
   "hrsh7th/nvim-cmp",

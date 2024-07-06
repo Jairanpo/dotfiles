@@ -1,8 +1,20 @@
-# Navigation
-alt - h : yabai -m window --focus west
-alt - j : yabai -m window --focus south
-alt - k : yabai -m window --focus north
-alt - l : yabai -m window --focus east
+# Space
+alt - e : yabai -m config layout bsp
+alt - s : yabai -m config layout stack
+
+# Navigation -----------
+#alt - h : yabai -m window --focus west
+alt - h : bin/bash -c 'layout=$(yabai -m query --spaces --space | jq -r ".type"); if [ "$layout" = "stack" ]; then yabai -m window --focus stack.prev; else yabai -m window --focus west; fi';
+
+#alt - l : yabai -m window --focus east
+alt - l : bin/bash -c 'layout=$(yabai -m query --spaces --space | jq -r ".type"); if [ "$layout" = "stack" ]; then yabai -m window --focus stack.next; else yabai -m window --focus east; fi';
+
+#alt - k : yabai -m window --focus north
+alt - k : bin/bash -c 'layout=$(yabai -m query --spaces --space | jq -r ".type"); if [ "$layout" = "stack" ]; then yabai -m window --focus stack.next; else yabai -m window --focus north; fi';
+
+#alt - j : yabai -m window --focus south
+alt - j : bin/bash -c 'layout=$(yabai -m query --spaces --space | jq -r ".type"); if [ "$layout" = "stack" ]; then yabai -m window --focus stack.prev; else yabai -m window --focus south; fi';
+# -----------------------
 
 alt - left : yabai -m window --focus west
 alt - down : yabai -m window --focus south

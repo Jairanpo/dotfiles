@@ -7,7 +7,7 @@ require("oil").setup({
         ["<C-t>"] = { "actions.select", opts = { tab = true }, desc = "Open the entry in new tab" },
         ["<C-p>"] = "actions.preview",
         ["<C-c>"] = "actions.close",
-        ["<C-y">"] = "actions.refresh",
+        ["<C-y>"] = "actions.refresh",
         ["-"] = "actions.parent",
         ["_"] = "actions.open_cwd",
         ["`"] = "actions.cd",

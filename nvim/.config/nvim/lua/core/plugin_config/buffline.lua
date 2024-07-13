@@ -18,4 +18,5 @@ vim.keymap.set('n', '<leader>n', ':BufferLineCycleNext <CR>')
 
 vim.keymap.set('n', 'gD', ':BufferLinePickClose <CR>')
 vim.keymap.set('n', '<leader>i', ':BufferLineCloseOthers <CR>')
+vim.keymap.set('n', '<leader>x', ':bd<CR>')
 

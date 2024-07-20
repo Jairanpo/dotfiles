@@ -125,3 +125,4 @@ source ~/.zsh_profile
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 source ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="/usr/local/go/bin:$PATH"

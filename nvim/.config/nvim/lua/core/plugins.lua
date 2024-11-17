@@ -48,7 +48,8 @@ local plugins = {
     dependencies = { "nvim-tree/nvim-web-devicons" }
   },
   {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
-  'mhartington/formatter.nvim'
+  'mhartington/formatter.nvim',
+  'nvim-java/nvim-java'
 }
 
 local opts = {}

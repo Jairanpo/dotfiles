@@ -2,6 +2,7 @@ require("mason-lspconfig").setup({
   ensure_installed = { "lua_ls", "tsserver", "gopls", "pyright" }
 })
 
+require('java').setup()
 
 local lspconfig = require('lspconfig')
 

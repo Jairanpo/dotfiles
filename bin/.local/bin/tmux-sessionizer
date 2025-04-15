@@ -1,9 +1,23 @@
 #!/usr/bin/env bash
 
+PATHS=(
+  "$HOME/"
+  "$HOME/work"
+  "$HOME/work/*.worktrees/*"
+  "$HOME/work/*"
+  "$HOME/work/*.worktrees/*"
+  "$HOME/personal"
+  "$HOME/personal/*.worktress/*"
+  "$HOME/learning"
+  "$HOME/learning/*.worktress/*"
+  "$HOME/work/main/projects"
+  "$HOME/work/main/projects/*.worktrees/*"
+)
+
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/ ~/work ~/personal ~/learning ~/work ~/work/main/projects -mindepth 1 -maxdepth 1 -type d 2> /dev/null | fzf)
+    selected=$(find ${PATHS[*]} -mindepth 1 -maxdepth 1 -type d 2> /dev/null | fzf)
 fi
 
 if [[ -z $selected ]]; then

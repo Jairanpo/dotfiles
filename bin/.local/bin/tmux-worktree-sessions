@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+# Define the base directory for all projects
+PROJECTS_ROOT_DIR="$HOME/work/main/projects"
+
+# Check if an argument was passed
+if [[ $# -eq 1 ]]; then
+    selected=$1
+else
+    # Find directories:
+    # - Starting from PROJECTS_ROOT_DIR
+    # - Exactly two levels deep (-mindepth 2 -maxdepth 2)
+    #   (e.g., $HOME/work/main/projects/my-project/my-branch)
+    # - That are directories (-type d)
+    # - Whose names are "main", "develop", "qa", or start with "feat-" or "fix-"
+    selected=$(find "$PROJECTS_ROOT_DIR" -mindepth 2 -maxdepth 2 -type d \
+        \( -name "main" -o -name "develop" -o -name "qa" -o -name "feat-*" -o -name "fix-*" \) \
+        2> /dev/null | fzf)
+fi
+
+# If nothing was selected (e.g., fzf was cancelled), exit
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
+# Generate a clean session name from the selected path's last part
+selected_name=$(basename "$selected" | tr . _)
+
+# Check if tmux is already running or if we are inside a tmux session
+tmux_running=$(pgrep tmux)
+
+# If tmux is not running at all, create a new session and attach to it
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+    tmux new-session -s "$selected_name" -c "$selected"
+    exit 0
+fi
+
+# If a tmux session with the selected name doesn't exist, create it in detached mode
+if ! tmux has-session -t="$selected_name" 2> /dev/null; then
+    tmux new-session -ds "$selected_name" -c "$selected"
+fi
+
+# Switch to the selected or newly created tmux session
+tmux switch-client -t "$selected_name"

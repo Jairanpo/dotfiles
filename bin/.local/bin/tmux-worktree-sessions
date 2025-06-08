@@ -56,4 +56,4 @@ fi
 # Switch to the selected or newly created tmux session.
 # This will switch your current tmux client to the desired session,
 # regardless of whether you were previously attached to another session or not.
-tmux switch-client -t "$selected_name
+tmux switch-client -t "$selected_name"

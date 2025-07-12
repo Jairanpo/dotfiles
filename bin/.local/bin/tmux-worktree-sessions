@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Define the base directory for all projects
-PROJECTS_ROOT_DIR="$HOME/work/main/projects"
+PROJECTS_ROOT_DIR="$HOME/work/**/**/"
 
 # Check if an argument was passed
 if [[ $# -eq 1 ]]; then
@@ -10,7 +10,7 @@ else
     # Find directories:
     # - Starting from PROJECTS_ROOT_DIR
     # - Exactly two levels deep (-mindepth 2 -maxdepth 2)
-    #   (e.g., $HOME/work/main/projects/my-project/my-branch)
+    #   (e.g., $HOME/work/domain/my-project/my-branch)
     # - That are directories (-type d)
     # - Whose names are "main", "develop", "qa", or start with "feat-" or "fix-"
     selected=$(find "$PROJECTS_ROOT_DIR" -mindepth 2 -maxdepth 2 -type d \

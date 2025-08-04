@@ -171,7 +171,7 @@ exec_always feh --bg-fill ~/Pictures/wallpapers/guts.jpg
 
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #445544 #444444 #ffffff #882222   #DDAA44
+client.focused          #445544 #444444 #ffffff #882222   #33AA99
 client.focused_inactive #101010 #101010 #ffffff #484e50   #101010
 client.unfocused        #333333 #101010 #888888 #292d2e   #101010
 client.urgent           #2f343a #900000 #ffffff #900000   #900000

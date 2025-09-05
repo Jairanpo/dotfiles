@@ -50,7 +50,8 @@ local plugins = {
   {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
   'mhartington/formatter.nvim',
   'nvim-java/nvim-java',
-  'terryma/vim-multiple-cursors'
+  'terryma/vim-multiple-cursors',
+  'buoto/gotests-vim'
 }
 
 local opts = {}

@@ -16,6 +16,8 @@ function SourceInitLua()
 	vim.cmd('source $MYVIMRC')
 end
 
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic on current line" })
+
 vim.keymap.set('n', '<leader>r', function() SourceInitLua() end, {noremap = true, silent = true})
 
 vim.api.nvim_set_keymap('n', '<leader><leader><leader>l', '<Plug>NetrwRefresh', {noremap = true, silent = true})

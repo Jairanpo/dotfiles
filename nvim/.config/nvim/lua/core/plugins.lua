@@ -50,7 +50,13 @@ local plugins = {
   {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
   'mhartington/formatter.nvim',
   'terryma/vim-multiple-cursors',
-  'buoto/gotests-vim'
+  'buoto/gotests-vim',
+  {
+  'zadirion/Unreal.nvim',
+  dependencies = {
+    'tpope/vim-dispatch',
+  },
+}
 }
 
 local opts = {}

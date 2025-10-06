@@ -4,7 +4,7 @@
 PROJECTS_ROOT_DIR="$HOME/work"
 
 PATHS=(
-  "$HOME/work"
+  "$HOME/work/raven"
 )
 
 # Check if an argument was passed
@@ -17,9 +17,7 @@ else
     #   (e.g., $HOME/work/domain/my-project/my-branch)
     # - That are directories (-type d)
     # - Whose names are "main", "develop", "qa", or start with "feat-" or "fix-"
-    selected=$(find ${PATHS[*]} -mindepth 2 -maxdepth 2 -type d \
-        \( -name "main" -o -name "master" -o -name "develop" -o -name "qa" -o -name "feat-*" -o -name "fix-*" \) \
-        2> /dev/null | fzf)
+    selected=$(find ${PATHS[*]} -mindepth 2 -maxdepth 2 -type d 2> /dev/null | fzf)
 fi
 
 # If nothing was selected (e.g., fzf was cancelled), exit

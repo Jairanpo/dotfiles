@@ -1,18 +1,26 @@
 require("mason-lspconfig").setup({
-  ensure_installed = { "lua_ls", "tsserver", "gopls", "pyright" }
+  ensure_installed = { "lua_ls", "ts_ls", "gopls", "pyright" }
 })
 
-local lspconfig = require('lspconfig')
+-- Get capabilities from nvim-cmp
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-local lsp_defaults = lspconfig.util.default_config
+local on_attach = function(_, _)
+  vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {})
+  vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, {})
+  vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, {})
+  vim.keymap.set('n', '<leader>gi', vim.lsp.buf.implementation, {})
+  vim.keymap.set('n', '<leader>gr', require('telescope.builtin').lsp_references, {})
+  vim.keymap.set('n', '<leader>K', vim.lsp.buf.hover, {})
+end
 
-lsp_defaults.capabilities = vim.tbl_deep_extend(
-  'force',
-  lsp_defaults.capabilities,
-  require('cmp_nvim_lsp').default_capabilities()
-)
-
-require("lspconfig").lua_ls.setup {
+-- Lua Language Server
+vim.lsp.config('lua_ls', {
+  cmd = { 'lua-language-server' },
+  filetypes = { 'lua' },
+  root_markers = { '.luarc.json', '.luarc.jsonc', '.luacheckrc', '.stylua.toml', 'stylua.toml', 'selene.toml', 'selene.yml', '.git' },
+  capabilities = capabilities,
+  on_attach = on_attach,
   settings = {
     Lua = {
       diagnostics = {
@@ -26,52 +34,55 @@ require("lspconfig").lua_ls.setup {
       },
     },
   }
-}
-
-local on_attach = function(_, _)
-  vim.keymap.set('n', '<leader>rn', vim.slp.buf.rename, {})
-  vim.keymap.set('n', '<leader>ca', vim.slp.buf.code_action, {})
-
-  vim.keymap.set('n', '<leader>gd', vim.slp.buf.definition, {})
-  vim.keymap.set('n', '<leader>gi', vim.slp.buf.implementation, {})
-  vim.keymap.set('n', '<leader>gr', require('telescope.builtin').lsp_references, {})
-  vim.keymap.set('n', '<leader>K', vim.slp.buf.hover, {})
-end
-
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-require("lspconfig").rust_analyzer.setup({
-  on_attach = on_attach,
-  capabilities = capabilities
 })
 
-require("lspconfig").lua_ls.setup({
+-- Rust Analyzer
+vim.lsp.config('rust_analyzer', {
+  cmd = { 'rust-analyzer' },
+  filetypes = { 'rust' },
+  root_markers = { 'Cargo.toml', 'rust-project.json' },
+  capabilities = capabilities,
   on_attach = on_attach,
-  capabilities = capabilities
 })
 
-require("lspconfig").tsserver.setup({
+-- TypeScript/JavaScript
+vim.lsp.config('ts_ls', {
+  cmd = { 'typescript-language-server', '--stdio' },
+  filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+  root_markers = { 'package.json', 'tsconfig.json', 'jsconfig.json', '.git' },
+  capabilities = capabilities,
   on_attach = on_attach,
-  capabilities = capabilities
-})
-require("lspconfig").gopls.setup({
-  on_attach = on_attach,
-  capabilities = capabilities
-})
-require("lspconfig").pyright.setup({
-  on_attach = on_attach,
-  capabilities = capabilities
 })
 
+-- Go
+vim.lsp.config('gopls', {
+  cmd = { 'gopls' },
+  filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
+  root_markers = { 'go.work', 'go.mod', '.git' },
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+
+-- Python
+vim.lsp.config('pyright', {
+  cmd = { 'pyright-langserver', '--stdio' },
+  filetypes = { 'python' },
+  root_markers = { 'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', 'Pipfile', 'pyrightconfig.json', '.git' },
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+
+-- Enable the language servers
+vim.lsp.enable('lua_ls')
+vim.lsp.enable('rust_analyzer')
+vim.lsp.enable('ts_ls')
+vim.lsp.enable('gopls')
+vim.lsp.enable('pyright')
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
-    -- Enable completion triggered by <c-x><c-o>
     vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
-
-    -- Buffer local mappings.
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
     local opts = { buffer = ev.buf }
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)

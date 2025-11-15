@@ -13,12 +13,19 @@ if [[ $# -eq 1 ]]; then
 else
     # Find directories:
     # - Starting from PROJECTS_ROOT_DIR
-    # - Exactly two levels deep (-mindepth 2 -maxdepth 2)
-    #   (e.g., $HOME/work/domain/my-project/my-branch)
-    # - That are directories (-type d)
-    # - Whose names are "main", "develop", "qa", or start with "feat-" or "fix-"
-    selected=$(find ${PATHS[*]} -mindepth 2 -maxdepth 2 -type d \
-        \( -name "main" -o -name "master" -o -name "develop" -o -name "qa" -o -name "feat-*" -o -name "fix-*" \) \
+    # - Between 3-4 levels deep to capture both flat branches and feat/fix subdirectories
+    # - That match our worktree naming patterns
+    selected=$(find ${PATHS[*]} -mindepth 3 -maxdepth 4 -type d \
+        \( \
+            -path "*/main" -o \
+            -path "*/master" -o \
+            -path "*/develop" -o \
+            -path "*/qa" -o \
+            -path "*/feat/*" -o \
+            -path "*/fix/*" -o \
+            -name "feat-*" -o \
+            -name "fix-*" \
+        \) \
         2> /dev/null | fzf)
 fi
 

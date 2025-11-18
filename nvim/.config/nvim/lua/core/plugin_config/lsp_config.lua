@@ -1,5 +1,5 @@
 require("mason-lspconfig").setup({
-  ensure_installed = { "lua_ls", "ts_ls", "gopls", "pyright" }
+  ensure_installed = { "lua_ls", "tsserver", "gopls", "pyright" }
 })
 
 -- Get capabilities from nvim-cmp
@@ -46,7 +46,7 @@ vim.lsp.config('rust_analyzer', {
 })
 
 -- TypeScript/JavaScript
-vim.lsp.config('ts_ls', {
+vim.lsp.config('tsserver', {
   cmd = { 'typescript-language-server', '--stdio' },
   filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
   root_markers = { 'package.json', 'tsconfig.json', 'jsconfig.json', '.git' },
@@ -75,7 +75,7 @@ vim.lsp.config('pyright', {
 -- Enable the language servers
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('rust_analyzer')
-vim.lsp.enable('ts_ls')
+vim.lsp.enable('tsserver')
 vim.lsp.enable('gopls')
 vim.lsp.enable('pyright')
 

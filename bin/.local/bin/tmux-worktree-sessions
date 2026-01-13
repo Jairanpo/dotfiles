@@ -5,6 +5,7 @@ PROJECTS_ROOT_DIR="$HOME/work"
 
 PATHS=(
   "$HOME/work"
+  "$HOME/hub"
 )
 
 # Check if an argument was passed

@@ -23,29 +23,15 @@ local plugins = {
       vim.cmd("colorscheme poimandres")
     end 
   },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    config = function()
-      require('core.plugin_config.treesitter')
-    end
-  },
+  {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
   { "nvim-tree/nvim-web-devicons", opts = {} },
 	{'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' }},
-  {'nvim-telescope/telescope.nvim', tag = '0.1.8', dependencies = { 'nvim-lua/plenary.nvim' }},
+  {'nvim-telescope/telescope.nvim', version = '0.1.8', dependencies = { 'nvim-lua/plenary.nvim' }},
   "github/copilot.vim",
   {
   "mason-org/mason.nvim",
   opts = {}
   },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    lazy = false,
-    opts = {
-      auto_install = true
-    }
-  },
-  "neovim/nvim-lspconfig",
   "christoomey/vim-tmux-navigator",
   "hrsh7th/nvim-cmp",
   "hrsh7th/cmp-nvim-lsp",

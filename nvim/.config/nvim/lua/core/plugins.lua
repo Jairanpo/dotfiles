@@ -35,9 +35,19 @@ local plugins = {
   "christoomey/vim-tmux-navigator",
   "hrsh7th/nvim-cmp",
   "hrsh7th/cmp-nvim-lsp",
+  "hrsh7th/cmp-path",
   "L3MON4D3/LuaSnip",
   "saadparwaiz1/cmp_luasnip",
   "rafamadriz/friendly-snippets",
+  "windwp/nvim-autopairs",
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      "williamboman/mason-lspconfig.nvim",
+      "nvimtools/none-ls.nvim",
+      "nvim-lua/plenary.nvim"
+    }
+  },
   {
     'stevearc/oil.nvim',
     opts = {},
@@ -47,6 +57,13 @@ local plugins = {
   'mhartington/formatter.nvim',
   'terryma/vim-multiple-cursors',
   'buoto/gotests-vim',
+  {
+    "jay-babu/mason-null-ls.nvim",
+    dependencies = {
+      "williamboman/mason.nvim",
+      "nvimtools/none-ls.nvim",
+    }
+  },
   {
   'zadirion/Unreal.nvim',
   dependencies = {

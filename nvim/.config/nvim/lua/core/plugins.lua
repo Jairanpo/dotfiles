@@ -29,7 +29,8 @@ local plugins = {
   {'nvim-telescope/telescope.nvim', version = '0.1.5', dependencies = { 'nvim-lua/plenary.nvim' }},
   "github/copilot.vim",
   {
-  "mason-org/mason.nvim",
+  "williamboman/mason.nvim",
+  version = "v1.9.0",
   opts = {}
   },
   "christoomey/vim-tmux-navigator",
@@ -42,8 +43,12 @@ local plugins = {
   "windwp/nvim-autopairs",
   {
     "neovim/nvim-lspconfig",
+    version = "v2.5.0",
     dependencies = {
-      "williamboman/mason-lspconfig.nvim",
+      {
+        "williamboman/mason-lspconfig.nvim",
+        version = "v1.9.0",
+      },
       "nvimtools/none-ls.nvim",
       "nvim-lua/plenary.nvim"
     }
@@ -59,6 +64,7 @@ local plugins = {
   'buoto/gotests-vim',
   {
     "jay-babu/mason-null-ls.nvim",
+    version = "v1.9.0",
     dependencies = {
       "williamboman/mason.nvim",
       "nvimtools/none-ls.nvim",

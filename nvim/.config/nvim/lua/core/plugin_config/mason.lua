@@ -16,13 +16,12 @@ mason.setup({
 -- Automatically install LSP servers
 mason_lspconfig.setup({
   ensure_installed = {
-    "ts_ls",             -- TypeScript language server (new name)
+    "tsserver",           -- TypeScript language server (compatible name)
     "lua_ls",            -- Lua language server (for Neovim config)
     "html",              -- HTML language server
     "cssls",             -- CSS language server
     "jsonls",            -- JSON language server
   },
-  automatic_installation = true,
   handlers = {
     -- Default handler for all servers
     function(server_name)
@@ -40,9 +39,9 @@ mason_lspconfig.setup({
       })
     end,
     
-    -- Custom handler for ts_ls (TypeScript)
-    ["ts_ls"] = function()
-      require("lspconfig").ts_ls.setup({
+    -- Custom handler for tsserver (TypeScript)
+    ["tsserver"] = function()
+      require("lspconfig").tsserver.setup({
         capabilities = require("cmp_nvim_lsp").default_capabilities(),
         on_attach = function(client, bufnr)
           -- Basic keymaps
@@ -79,5 +78,4 @@ mason_null_ls.setup({
     "prettier",           -- Prettier formatter
     "eslint_d",           -- ESLint daemon (faster ESLint)
   },
-  automatic_installation = true,
 })

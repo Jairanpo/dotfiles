@@ -4,8 +4,9 @@
 PROJECTS_ROOT_DIR="$HOME/work"
 
 PATHS=(
-  "$HOME/work"
-  "$HOME/hub"
+  "$HOME/workspace"
+  "$HOME/workspace/*/workspace/repos"
+  "$HOME/workspace/repos"
 )
 
 IGNORE_DIRS=(
@@ -16,7 +17,7 @@ IGNORE_DIRS=(
   "vendor"
   "dist"
   "coverage"
-  "worktrees"
+  "worktrees/main"
 )
 
 EXCLUSIONS=$(printf '! -path "*/%s/*" ' "${IGNORE_DIRS[@]}")
@@ -29,7 +30,7 @@ else
     # - Starting from PROJECTS_ROOT_DIR
     # - Between 3-4 levels deep to capture both flat branches and feat/fix subdirectories
     # - That match our worktree naming patterns
-    selected=$(find ${PATHS[@]} -mindepth 2 -maxdepth 4 -type d \
+    selected=$(find ${PATHS[@]} -mindepth 2 -maxdepth 3 -type d \
         \( \
             -path "*/main" -o \
             -path "*/master" -o \

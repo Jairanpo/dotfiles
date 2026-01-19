@@ -4,23 +4,14 @@
 PROJECTS_ROOT_DIR="$HOME/work"
 
 PATHS=(
-  "$HOME/workspace"
   "$HOME/workspace/*/workspace/repos"
-  "$HOME/workspace/repos"
+  "$HOME/workspace/repos/"
+  "$HOME/workspace/repos/*/main"
+  "$HOME/workspace/repos/*/develop"
+  "$HOME/workspace/repos/*/feat"
+  "$HOME/workspace/repos/*/fix"
+  "$HOME/workspace/repos/*/feature"
 )
-
-IGNORE_DIRS=(
-  "node_modules"
-  "target"
-  "build"
-  ".git"
-  "vendor"
-  "dist"
-  "coverage"
-  "worktrees/main"
-)
-
-EXCLUSIONS=$(printf '! -path "*/%s/*" ' "${IGNORE_DIRS[@]}")
 
 # Check if an argument was passed
 if [[ $# -eq 1 ]]; then
@@ -30,7 +21,7 @@ else
     # - Starting from PROJECTS_ROOT_DIR
     # - Between 3-4 levels deep to capture both flat branches and feat/fix subdirectories
     # - That match our worktree naming patterns
-    selected=$(find ${PATHS[@]} -mindepth 2 -maxdepth 3 -type d \
+    selected=$(find ${PATHS[@]} -mindepth 0 -maxdepth 1 -type d \
         \( \
             -path "*/main" -o \
             -path "*/master" -o \
@@ -40,7 +31,7 @@ else
             -path "*/fix/*" -o \
             -name "feat-*" -o \
             -name "fix-*" \
-        \) $EXCLUSIONS 2> /dev/null | fzf)
+        \) 2> /dev/null | fzf)
 fi
 
 # If nothing was selected (e.g., fzf was cancelled), exit

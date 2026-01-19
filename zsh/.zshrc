@@ -123,4 +123,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 eval "$(oh-my-posh init zsh)"
-eval "$(oh-my-posh init zsh --config ~/ohmyposh/config.json)"
+eval "$(oh-my-posh init zsh --config ~/.ohmyposh/config.json)"

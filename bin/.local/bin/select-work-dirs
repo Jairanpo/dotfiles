@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
 # Define the base directory for all projects
+# OS: /home/jair/workspace/client-name/workspace/repos
+# VAGRANT: /home/vagrant/workspace/repos/invagrant-example/main
 PATHS=(
-  "$HOME/workspace"
-  "$HOME/workspace/*/repos"
+  "$HOME/workspace/*/workspace/repos"
+  "$HOME/workspace/repos"
 )
 
 SEARCH_PATTERNS=(
@@ -42,4 +44,4 @@ done
 args+=( \) )
 
 
-selected=$(find "${PATHS[@]}" -mindepth 1 -maxdepth 6 -type d "${args[@]}" 2> /dev/null | fzf)
+selected=$(find "${PATHS[@]}" -maxdepth 3 -type d "${args[@]}" 2> /dev/null | fzf)

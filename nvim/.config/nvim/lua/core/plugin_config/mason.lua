@@ -8,3 +8,12 @@ require("mason").setup({
     "github:mason-org/mason-registry"
   }
 })
+
+-- require("mason-lspconfig").setup {
+--     automatic_enable = {
+--         "ts_ls",
+--         "prettier",
+--         "eslint_lsp"
+--     }
+-- }
+

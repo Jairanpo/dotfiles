@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+# Define the base directory for all projects
+PATHS=(
+  "$HOME/workspace"
+  "$HOME/workspace/*/repos"
+)
+
+SEARCH_PATTERNS=(
+  "*/main"
+  "*/master"
+  "*/develop"
+  "*/feature/*"
+  "*/feat/*"
+  "*/fix/*"
+)
+
+IGNORE_DIRS=(
+  ".git"
+  "node_modules"
+  "target"
+  "dist"
+  "build"
+  ".idea"
+  ".vscode"
+  "worktree"
+)
+
+args=("(")
+first=true
+for pattern in "${SEARCH_PATTERNS[@]}"; do
+  echo $pattern
+  if [ "$first" = true ]; then
+    first=false
+  else
+    args+=("-o")
+  fi
+  args+=("-path")
+  args+=("$pattern")
+done
+
+args+=( \) )
+
+
+selected=$(find "${PATHS[@]}" -mindepth 1 -maxdepth 6 -type d "${args[@]}" 2> /dev/null | fzf)

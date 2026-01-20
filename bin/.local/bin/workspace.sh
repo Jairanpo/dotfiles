@@ -5,11 +5,11 @@
 
 get_work_directories(){
   PATHS=(
-    "$HOME/workspace/repos"
+    "$HOME/ws/repos"
   )
 
   # OS: /home/jair/workspace/client-name/workspace/repos/project-name/here
-  for deep_root in "$HOME/workspace"/*/workspace/repos; do
+  for deep_root in "$HOME/ws"/*/ws/repos; do
       if [ -d "$deep_root" ]; then
           PATHS+=("$deep_root")
       fi
@@ -38,5 +38,5 @@ get_work_directories(){
 
   args+=( \) )
 
-  echo $(find "${PATHS[@]}" -maxdepth 3 -type d "${args[@]}" 2> /dev/null)
+  echo $(find "${PATHS[@]}" -maxdepth 3 -type d "${args[@]}" 2> /dev/null | fzf)
 }

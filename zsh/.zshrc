@@ -28,3 +28,6 @@ for file in "${FILES_TO_SOURCE[@]}"; do
 done
 
 eval "$(oh-my-posh init zsh --config ~/.ohmyposh/config.json)"
+
+# opencode
+export PATH=/home/vagrant/.opencode/bin:$PATH

@@ -1,28 +1,25 @@
 #!/usr/bin/env bash
 
-# Define the base directory for all projects
-# VAGRANT: /home/vagrant/workspace/repos/project-name/here
+PATHS=(
+  "$HOME/ws/repos"
+)
+
+SEARCH_PATTERNS=(
+  "*/main"
+  "*/master"
+  "*/develop"
+  "*/feature/*"
+  "*/feat/*"
+  "*/fix/*"
+)
 
 get_work_directories(){
-  PATHS=(
-    "$HOME/ws/repos"
-  )
-
   # OS: /home/jair/workspace/client-name/workspace/repos/project-name/here
   for deep_root in "$HOME/ws"/*/ws/repos; do
       if [ -d "$deep_root" ]; then
           PATHS+=("$deep_root")
       fi
   done
-
-  SEARCH_PATTERNS=(
-    "*/main"
-    "*/master"
-    "*/develop"
-    "*/feature/*"
-    "*/feat/*"
-    "*/fix/*"
-  )
 
   args=("(")
   first=true

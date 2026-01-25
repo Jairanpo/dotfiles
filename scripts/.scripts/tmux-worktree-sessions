@@ -3,7 +3,7 @@
 # Define the base directory for all projects
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 echo $SCRIPT_DIR
-source "$SCRIPT_DIR/workspace.sh"
+source "$SCRIPT_DIR/workspace"
 
 selected=$(get_work_directories)
 

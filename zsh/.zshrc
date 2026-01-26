@@ -27,7 +27,6 @@ for file in "${FILES_TO_SOURCE[@]}"; do
     fi
 done
 
-eval "$(oh-my-posh init zsh --config ~/.ohmyposh/config.json)"
+export PATH=$HOME/.opencode/bin:$PATH
 
-# opencode
-export PATH=/home/vagrant/.opencode/bin:$PATH
+eval "$(oh-my-posh init zsh --config ~/.ohmyposh/config.json)" || { printf "%b" "FAILED.\n"; exit 1; }

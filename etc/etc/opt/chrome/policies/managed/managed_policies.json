@@ -1,0 +1,17 @@
+{
+  "HomepageLocation": "https://www.google.com",
+  "HomepageIsNewTabPage": false,
+  "DefaultBrowserSettingEnabled": true,
+  "RestoreOnStartup": 1,
+  "SafeBrowsingProtectionLevel": 1,
+  "MaxConnectionsPerProxy": 99,
+  "ExtensionInstallForcelist": [
+    "abdkjmofmjelgafcdffaimhgdgpagmop",
+    "oejgccbfbmkkpaidnkphaiaecficdnfn", 
+    "ldgfbffkinooeloadekpmfoklnobpien",
+    "aeblfdkhhhdcdjpifhhbdiojplfjncoa",
+    "pliibjocnfmkagafnbkfcimonlnlpghj",
+    "ghbmnnjooekpmoecnnnilnnbdlolhkhi",
+    "jkgehijlkoolgcjifalbiicaomkngakb"
+  ]
+}

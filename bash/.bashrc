@@ -5,8 +5,8 @@ alias python=python3
 
 # This is so TMUX sessions share history
 shopt -s histappend
-shopt -s histreddit
-shopt -s hisverify
+shopt -s histreedit
+shopt -s histverify
 HISCONTROL="ignoreboth"
 PROMPT_COMMAND="history -a;history -c;history -r; $PROMPT_COMMAND"
 

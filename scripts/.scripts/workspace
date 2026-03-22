@@ -13,6 +13,11 @@ SEARCH_PATTERNS=(
   "*/fix/*"
 )
 
+exclude_patterns=(
+  "worktree"
+  "worktrees"
+)
+
 get_work_directories(){
   # OS: /home/jair/workspace/client-name/workspace/repos/project-name/here
   for deep_root in "$HOME/ws"/*/ws/repos; do
@@ -35,5 +40,7 @@ get_work_directories(){
 
   args+=( \) )
 
-  echo $(find "${PATHS[@]}" -maxdepth 3 -type d "${args[@]}" 2> /dev/null | fzf)
+  exclude_regex=$(IFS='|'; echo "${exclude_patterns[*]}")
+
+  echo $(find "${PATHS[@]}" -maxdepth 3 -type d "${args[@]}" 2> /dev/null | grep -Ev "/(${exclude_regex})/" | fzf)
 }

@@ -1,8 +1,11 @@
 {
   "HomepageLocation": "https://app.clickup.com/9014453723/calendar",
+  "showHomeButton": true,
+  "RestoreOnStartup": 4,
+  "RestoreOnStartupURLs": ["https://app.clickup.com/9014453723/calendar"],
   "HomepageIsNewTabPage": false,
+  "NewTabPageLocation": "https://kagi.com/",
   "DefaultBrowserSettingEnabled": true,
-  "RestoreOnStartup": 1,
   "SafeBrowsingProtectionLevel": 1,
   "MaxConnectionsPerProxy": 99,
   "ExtensionInstallForcelist": [

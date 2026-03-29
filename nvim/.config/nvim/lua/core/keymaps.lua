@@ -11,6 +11,7 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.shiftround = true
 vim.opt.expandtab = true
+vim.wo.number = true
 
 function SourceInitLua()
 	vim.cmd('source $MYVIMRC')
@@ -62,3 +63,4 @@ function ToggleLineNumbers()
 end
 
 vim.keymap.set('n', '<leader>nu', function() ToggleLineNumbers() end, {noremap=true})
+vim.keymap.set('n', '<leader>lr', ":LspRestart<CR>", { desc = "Restart LSP" })

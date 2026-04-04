@@ -26,13 +26,30 @@ CLICKUP_LIST_ID=$(yq -r '.clickup.list_id' ~/.global.yml)
 
 If either value is null or empty, stop and tell the user to configure `~/.global.yml`.
 
+### Company field
+
+The **Company** custom field must always be set on every Task and Story. It is a dropdown with the following options:
+
+| Name | Option ID |
+|------|-----------|
+| Plink | `964c27a9-a26f-4e06-bd8f-b74c00c8ac6c` |
+| Tamashii | `de8f0219-df3e-4f61-907e-246d459fd17e` |
+| Capital One | `da0beb58-3b41-48a0-b3e4-809fff0c67c7` |
+| Corvidae | `1331b397-e3ad-40ce-9e54-b293a66a85fb` |
+
+**Always ask the user which company this task belongs to before creating.** Default to **Corvidae** if the user does not specify.
+
+Field ID: `3d380522-777f-4849-b8e6-69ca2d4d68ac`
+
 ## Task Types
 
-| Type  | What it does | ClickUp result |
-|-------|-------------|----------------|
-| Story | Outcome-based work item | New task in list with tag `story` |
-| Task  | Technical work item | New task in list with tag `task` |
-| Chore | Small reminder/subtask | Checklist item inside an existing Story or Task |
+| Type  | What it does | ClickUp result | `custom_item_id` |
+|-------|-------------|----------------|------------------|
+| Story | Outcome-based work item | New task in list with type Story | `1002` |
+| Task  | Technical work item | New task in list with type Task | `0` |
+| Chore | Small reminder/subtask | Checklist item inside an existing Story or Task | `1012` (on parent) |
+
+Never use tags to indicate type. Always set `custom_item_id` on creation.
 
 ## Instructions
 
@@ -54,18 +71,28 @@ Before creating anything, confirm these fields with the user:
 |-------|----------|--------|-------|
 | **Title** | Yes | Short, descriptive string | e.g. "Set up CI/CD pipeline for staging" |
 | **Description** | Yes | Markdown string | Include what/why/how for Tasks; outcome for Stories |
-| **Due date** | Yes | `YYYY-MM-DD` | Needed for calendar sync |
+| **Due date** | Yes | Hours estimate: `3h`, `6h`, `9h`, etc. | Max 2 weeks. System applies 50% padding and caps at 3h of work/day to calculate due date. |
 | **Priority** | Yes | 1=Urgent, 2=High, 3=Normal, 4=Low | Default to 3 if user doesn't specify |
 | **Type** | Yes | `story`, `task`, or `chore` | Determines creation behavior |
 | **Parent Task ID** | Only for Chores | ClickUp task ID | Required to know where to add checklist item |
+
+**Due date calculation:**
+- Take the user's hour estimate (e.g. `6h`)
+- Apply 50% padding: `padded = estimate * 1.5`
+- Divide by 3 (max hours/day): `days = ceil(padded / 3)`
+- Cap at 14 days (2 weeks); reject if it would exceed that
+- Due date = today + days
+
+Example: `6h` → 6 * 1.5 = 9h → 9 / 3 = 3 days → due in 3 days
 
 Present a summary to the user and ask for confirmation before creating:
 
 ```
 Title: Set up CI/CD pipeline for staging
 Type: Task
+Company: Corvidae
 Description: Configure GitHub Actions to deploy to staging on merge to develop...
-Due date: 2026-04-10
+Estimate: 6h → 3 days with padding (due 2026-04-07)
 Priority: 3 (Normal)
 
 Confirm? (yes/no)
@@ -75,10 +102,20 @@ Confirm? (yes/no)
 
 #### For Stories and Tasks — Create a new task
 
-Convert the due date to Unix milliseconds:
+Convert the hour estimate to a due date in Unix milliseconds:
 
 ```bash
-DUE_DATE_MS=$(date -d "YYYY-MM-DD" +%s)000
+# ESTIMATE_H = raw hours provided by user (e.g. 6)
+ESTIMATE_H=6
+PADDED=$(echo "$ESTIMATE_H * 1.5" | bc)
+DAYS=$(python3 -c "import math; print(math.ceil($PADDED / 3))")
+
+if [ "$DAYS" -gt 14 ]; then
+  echo "Error: estimate exceeds 2-week maximum."
+  exit 1
+fi
+
+DUE_DATE_MS=$(date -d "+${DAYS} days" +%s)000
 ```
 
 Create the task:
@@ -97,13 +134,23 @@ RESPONSE=$(curl -s -X POST \
     "due_date": '"${DUE_DATE_MS}"',
     "due_date_time": false,
     "priority": PRIORITY_NUMBER,
-    "tags": ["TYPE_HERE"]
+    "custom_item_id": CUSTOM_ITEM_ID
   }')
 
 echo "$RESPONSE" | jq '{id: .id, name: .name, url: .url, status: .status.status}'
 ```
 
 Save the returned `id` — needed if chores will be added to this task later.
+
+After creating the task, immediately set the Company field:
+
+```bash
+curl -s -X POST \
+  "https://api.clickup.com/api/v2/task/${TASK_ID}/field/3d380522-777f-4849-b8e6-69ca2d4d68ac" \
+  -H "Authorization: ${CLICKUP_API_TOKEN}" \
+  -H "Content-Type: application/json" \
+  -d '{"value": "COMPANY_OPTION_ID_HERE"}'
+```
 
 #### For Chores — Add checklist item to parent task
 
@@ -156,6 +203,19 @@ After creation, display:
 
 - For Tasks/Stories: task name, ID, URL, and due date
 - For Chores: parent task name, checklist item name, confirmation it was added
+
+Then ask the user: **"Should this task be set to IN PROGRESS?"**
+
+If yes, update the task status:
+
+```bash
+curl -s -X PUT \
+  "https://api.clickup.com/api/v2/task/TASK_ID" \
+  -H "Authorization: ${CLICKUP_API_TOKEN}" \
+  -H "Content-Type: application/json" \
+  -d '{"status": "in progress"}' \
+  | jq '{id: .id, name: .name, status: .status.status}'
+```
 
 Example output:
 ```

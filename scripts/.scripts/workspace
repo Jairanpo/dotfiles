@@ -2,6 +2,7 @@
 
 PATHS=(
   "$HOME/ws/repos"
+  "$HOME/ws/corvidae"
 )
 
 SEARCH_PATTERNS=(
@@ -11,6 +12,7 @@ SEARCH_PATTERNS=(
   "*/feature/*"
   "*/feat/*"
   "*/fix/*"
+  "*/unreal/Monstr"
 )
 
 exclude_patterns=(

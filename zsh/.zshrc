@@ -32,3 +32,6 @@ export PATH=$HOME/.opencode/bin:$PATH
 eval "$(oh-my-posh init zsh --config ~/.ohmyposh/config.json)" || { printf "%b" "FAILED.\n"; exit 1; }
 
 [ -f .venv/bin/activate ] && source .venv/bin/activate
+
+# OpenClaw Completion
+source "/home/jair/.openclaw/completions/openclaw.zsh"

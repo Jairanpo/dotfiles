@@ -1,4 +1,3 @@
-
 alias tmux="TERM=screen-256color-bce tmux"
 alias python=python3
 
@@ -42,7 +41,6 @@ eval "$(oh-my-posh init bash --config ~/.ohmyposh/config.json)" || { printf "%b"
 FILES_TO_SOURCE=(
   "$HOME/.sdkman/bin/sdkman-init.sh"
 )
-echo "${FILES_TO_SOURCE}"
 
 for file in "${FILES_TO_SOURCE[@]}"; do
     if [ -f "$file" ]; then
@@ -53,3 +51,22 @@ for file in "${FILES_TO_SOURCE[@]}"; do
         echo "Warning: Could not find '$file'. Skipping."
     fi
 done
+
+# ------------------------------------------------------------------
+#
+
+# ADD_TO_PATH
+PATH_LIST=(
+  "$HOME/.local/bin"
+)
+for dir in "${PATH_LIST[@]}"; do
+    if [ -d "$dir" ]; then
+        case ":$PATH:" in
+            *":$dir:"*) ;;                 # already in PATH, skip
+            *) PATH="$dir:$PATH" ;;        # prepend it
+        esac
+    else
+        echo "Warning: '$dir' not found. Skipping."
+    fi
+done
+export PATH

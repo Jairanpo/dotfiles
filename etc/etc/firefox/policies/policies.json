@@ -5,7 +5,9 @@
       "Block": ["<all_urls>"],
       "Exceptions": [
         "https://rebelway.academy/*",
-        "https://*.rebelway.academy/*"
+        "https://*.rebelway.academy/*",
+        "https://*.youtube.com/embed/*",
+        "https://*.youtube-nocookie.com/embed/*"
       ]
     }
   }

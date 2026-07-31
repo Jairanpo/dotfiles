@@ -1,0 +1,12 @@
+{
+  "policies": {
+    "DisableAppUpdate": true,
+    "WebsiteFilter": {
+      "Block": ["<all_urls>"],
+      "Exceptions": [
+        "https://rebelway.academy/*",
+        "https://*.rebelway.academy/*"
+      ]
+    }
+  }
+}

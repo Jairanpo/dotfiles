@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+# Symlink every file under $DOTFILES/etc into the real filesystem root.
+#   etc/etc/firefox/policies/policies.json -> /etc/firefox/policies/policies.json
+# Needs root, so it is kept out of the stow flow in ./install.
+set -euo pipefail
+
+DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SRC_ROOT="$DOTFILES/etc"
+
+if [[ ! -d $SRC_ROOT ]]; then
+	echo "no $SRC_ROOT directory" >&2
+	exit 1
+fi
+
+SUDO=""
+if [[ $EUID -ne 0 ]]; then
+	SUDO="sudo"
+fi
+
+while IFS= read -r -d '' src; do
+	dest="/${src#"$SRC_ROOT"/}"
+
+	if [[ -L $dest && $(readlink -f "$dest") == "$src" ]]; then
+		echo "ok      $dest"
+		continue
+	fi
+
+	$SUDO mkdir -p "$(dirname "$dest")"
+
+	if [[ -e $dest && ! -L $dest ]]; then
+		backup="$dest.bak.$(date +%Y%m%d%H%M%S)"
+		$SUDO mv "$dest" "$backup"
+		echo "backup  $dest -> $backup"
+	fi
+
+	$SUDO ln -sfn "$src" "$dest"
+	echo "linked  $dest -> $src"
+done < <(find "$SRC_ROOT" -type f -print0)

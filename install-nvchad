@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Install NvChad as the default Neovim config.
+# Your hand-built config is kept as a backup in this repo under nvim-custom/.
+set -euo pipefail
+
+NVIM_CONFIG="${HOME}/.config/nvim"
+
+if [[ -e $NVIM_CONFIG || -L $NVIM_CONFIG ]]; then
+	echo "already present: $NVIM_CONFIG (remove it first to reinstall NvChad)" >&2
+	exit 1
+fi
+
+git clone https://github.com/NvChad/starter "$NVIM_CONFIG"
+nvim

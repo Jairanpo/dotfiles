@@ -88,6 +88,7 @@ done
 # ADD_TO_PATH
 PATH_LIST=(
   "$HOME/.local/bin"
+  "/usr/local/go/bin"
 )
 for dir in "${PATH_LIST[@]}"; do
     if [ -d "$dir" ]; then
@@ -100,3 +101,5 @@ for dir in "${PATH_LIST[@]}"; do
     fi
 done
 export PATH
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"

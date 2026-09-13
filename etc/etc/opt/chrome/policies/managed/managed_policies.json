@@ -1,16 +1,16 @@
 {
-  "HomepageLocation": "https://app.clickup.com/9014453723/calendar",
+  "HomepageLocation": "https://app.clickup.com/9014453723",
   "showHomeButton": true,
   "RestoreOnStartup": 4,
-  "RestoreOnStartupURLs": ["https://app.clickup.com/9014453723/calendar"],
+  "RestoreOnStartupURLs": ["https://app.clickup.com/9014453723"],
   "HomepageIsNewTabPage": false,
-  "NewTabPageLocation": "https://kagi.com/",
+  "NewTabPageLocation": "https://google.com/",
   "DefaultBrowserSettingEnabled": true,
   "SafeBrowsingProtectionLevel": 1,
   "MaxConnectionsPerProxy": 99,
   "ExtensionInstallForcelist": [
+    "oejgccbfbmkkpaidnkphaiaecficdnfn", // TogglTrack
     "abdkjmofmjelgafcdffaimhgdgpagmop",
-    "oejgccbfbmkkpaidnkphaiaecficdnfn", 
     "ldgfbffkinooeloadekpmfoklnobpien",
     "aeblfdkhhhdcdjpifhhbdiojplfjncoa",
     "pliibjocnfmkagafnbkfcimonlnlpghj",

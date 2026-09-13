@@ -4,6 +4,8 @@
     "WebsiteFilter": {
       "Block": ["<all_urls>"],
       "Exceptions": [
+        "https://claude.ai/*",
+        "https://google.com/*",
         "https://rebelway.academy/*",
         "https://*.rebelway.academy/*",
         "https://*.youtube.com/embed/*",

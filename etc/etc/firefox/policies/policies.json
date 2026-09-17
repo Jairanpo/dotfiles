@@ -30,7 +30,8 @@
         "https://*.clients6.google.com/*",
         "https://*.gstatic.com/*",
         "https://*.googleusercontent.com/*",
-        "https://*.googleapis.com/*"
+        "https://*.googleapis.com/*",
+        "https://accounts.google.com.mx/*"
       ]
     }
   }

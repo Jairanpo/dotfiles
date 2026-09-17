@@ -2,7 +2,9 @@
   "policies": {
     "DisableAppUpdate": true,
     "WebsiteFilter": {
-      "Block": ["<all_urls>"],
+      "Block": [
+        "<all_urls>"
+      ],
       "Exceptions": [
         "https://claude.ai/*",
         "https://google.com/*",
@@ -10,7 +12,25 @@
         "https://*.rebelway.academy/*",
         "https://*.youtube.com/embed/*",
         "https://*.youtube-nocookie.com/embed/*",
-        "https://player.vimeo.com/video/*"
+        "https://player.vimeo.com/video/*",
+        "https://aws.amazon.com/*",
+        "https://*.aws.amazon.com/*",
+        "https://*.awsstatic.com/*",
+        "https://*.amazonaws.com/*",
+        "https://*.awsapps.com/*",
+        "https://auth.aws.amazon.com/*",
+        "https://signin.aws.amazon.com/*",
+        "https://console.aws.amazon.com/*",
+        "https://portal.aws.amazon.com/*",
+        "https://calendar.google.com/*",
+        "https://docs.google.com/*",
+        "https://accounts.google.com/*",
+        "https://ogs.google.com/*",
+        "https://drive.google.com/*",
+        "https://*.clients6.google.com/*",
+        "https://*.gstatic.com/*",
+        "https://*.googleusercontent.com/*",
+        "https://*.googleapis.com/*"
       ]
     }
   }

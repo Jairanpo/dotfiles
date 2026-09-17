@@ -31,7 +31,12 @@
         "https://*.gstatic.com/*",
         "https://*.googleusercontent.com/*",
         "https://*.googleapis.com/*",
-        "https://accounts.google.com.mx/*"
+        "https://accounts.google.com.mx/*",
+        "https://addons.mozilla.org/*",
+        "https://*.addons.mozilla.org/*",
+        "https://*.addons.mozilla.net/*",
+        "https://*.cdn.mozilla.net/*",
+        "https://addons.thunderbird.net/*"
       ]
     }
   }

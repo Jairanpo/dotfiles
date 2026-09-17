@@ -36,7 +36,10 @@
         "https://*.addons.mozilla.org/*",
         "https://*.addons.mozilla.net/*",
         "https://*.cdn.mozilla.net/*",
-        "https://addons.thunderbird.net/*"
+        "https://addons.thunderbird.net/*",
+        "http://localhost/*",
+        "http://127.0.0.1/*",
+        "http://[::1]/*"
       ]
     }
   }

@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
 PATHS=(
+  "$HOME/ws"
   "$HOME/ws/repos"
   "$HOME/ws/corvidae"
 )
 
 SEARCH_PATTERNS=(
+  "*/ws"
   "*/main"
   "*/master"
   "*/develop"
@@ -44,5 +46,5 @@ get_work_directories(){
 
   exclude_regex=$(IFS='|'; echo "${exclude_patterns[*]}")
 
-  echo $(find "${PATHS[@]}" -maxdepth 3 -type d "${args[@]}" 2> /dev/null | grep -Ev "/(${exclude_regex})/" | fzf)
+  echo $(find "${PATHS[@]}" -maxdepth 3 -type d "${args[@]}" 2> /dev/null | grep -Ev "/(${exclude_regex})/" | sort -u | fzf)
 }

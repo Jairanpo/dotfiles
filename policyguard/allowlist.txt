@@ -1,0 +1,5 @@
+# policyguard allowlist — exact exception strings that are ALWAYS kept, even
+# when they match a blocklist substring. These are the deliberate embed-only
+# exceptions (course videos), never the sites themselves.
+https://*.youtube.com/embed/*
+https://*.youtube-nocookie.com/embed/*

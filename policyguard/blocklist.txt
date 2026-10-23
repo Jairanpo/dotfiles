@@ -1,0 +1,8 @@
+# policyguard blocklist — substrings matched (case-insensitive) against each
+# WebsiteFilter exception entry. Any exception that contains one of these and is
+# NOT in allowlist.txt is stripped from the policy file on every enforce run.
+# Lines starting with # and blank lines are ignored. Add your own below.
+youtube.com
+youtu.be
+youtube-nocookie.com
+googlevideo.com

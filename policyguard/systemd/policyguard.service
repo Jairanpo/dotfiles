@@ -1,0 +1,9 @@
+[Unit]
+Description=policyguard — strip forbidden sites from the browser policy
+Documentation=file:%h/.dotfiles/policyguard/README.md
+
+[Service]
+Type=oneshot
+# %h is the user's home; the binary is installed by install.sh.
+ExecStart=%h/.local/bin/policyguard enforce
+Nice=10

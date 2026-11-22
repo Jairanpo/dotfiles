@@ -43,6 +43,10 @@
         "https://addons.thunderbird.net/*",
         "https://accounts.firefox.com/*",
         "https://*.accounts.firefox.com/*",
+        "https://1password.com/*",
+        "https://*.1password.com/*",
+        "https://*.1passwordusercontent.com/*",
+        "https://*.1passwordservices.com/*",
         "http://localhost/*",
         "http://127.0.0.1/*",
         "http://[::1]/*"

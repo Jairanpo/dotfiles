@@ -1,11 +1,18 @@
 {
   "policies": {
     "DisableAppUpdate": true,
+    "ExtensionSettings": {
+      "course-toggl@jairanpo": {
+        "installation_mode": "normal_installed",
+        "install_url": "file:///home/jair/.local/share/owl/owl.xpi"
+      }
+    },
     "WebsiteFilter": {
       "Block": [
         "<all_urls>"
       ],
       "Exceptions": [
+        "file:///home/jair/.local/share/owl/*",
         "https://claude.ai/*",
         "https://google.com/*",
         "https://rebelway.academy/*",

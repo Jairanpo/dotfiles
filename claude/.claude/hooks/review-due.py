@@ -13,10 +13,10 @@ def main():
     due = []
     for line in LOG.read_text().splitlines():
         cells = [c.strip() for c in line.strip().strip("|").split("|")]
-        if len(cells) != 5 or not cells[3][:4].isdigit():
+        if len(cells) < 5 or not cells[3][:4].isdigit():
             continue
         if cells[3] <= today:
-            due.append(f"- {cells[0]} ({cells[1]}), interval {cells[4]}d")
+            due.append(f"- {cells[0]} ({cells[1]}), interval {cells[4]}d, misses {cells[5] if len(cells) > 5 else 0}")
     if due:
         print("Spaced review: these concepts in ~/.claude/learning/"
               "review-log.md are due. Offer the student a short review "

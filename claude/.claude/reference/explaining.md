@@ -119,6 +119,12 @@ If the concept is already logged, reset it to Interval 1 instead.
 review (1 question per due concept, max 5); don't force it.
 
 **After each review question**, update the row:
-- Correct and sure → next step: 1 → 3 → 7 → 14 → 30 days.
-- Wrong or unsure → back to Interval 1.
+- Correct and sure → next step: 1 → 3 → 7 → 14 → 30 days; Misses = 0.
+- Wrong or unsure (even if correct) → back to Interval 1; Misses + 1.
 - Correct and sure at 30 days → remove the row (learned).
+
+**Struggling concepts** (Misses counts misses in a row):
+- Misses 2 → Interval 0: Next review = today. Ask it again later
+  in the same session, after other work, not right away.
+- Misses 3+ → the problem is understanding, not memory. Re-teach it
+  with a new analogy or angle *before* testing again, then use Interval 0.
